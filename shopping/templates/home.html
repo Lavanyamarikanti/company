@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+    <h1>home page</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="prod_name" placeholder="Name">
+        <input type="text" name="price" placeholder="Name">
+        <button>ADD</button>
+    </form>
+    {%for product in products%}
+    <h3>{{product.id}}</h3>
+    <h3>{{product.name}}</h3>
+    <h3>{{product.price}}</h3>
+    <a href="{% url 'delete' product.id %}"><button>Delete</button></a>
+    <a href="{% url 'edit' product.id %}"><button>Edit</button></a>
+    <hr>
+    {% endfor %}
+    <script src="{% static 'home.js' %}"></script>
+  
+</body>
+</html>
